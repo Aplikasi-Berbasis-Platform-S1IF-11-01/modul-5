@@ -5,7 +5,7 @@
   <h3>MODUL 5 <br> JAVASCRIPT</h3>
   <br />
   <br />
-  <img src="../Modul_1/assets/logo.jpeg" alt="Logo" width="300"> 
+  <img src="assets/logo.jpeg" alt="Logo" width="300"> 
   <br />
   <br />
   <br />
