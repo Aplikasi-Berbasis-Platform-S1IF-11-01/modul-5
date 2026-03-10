@@ -1,0 +1,110 @@
+/* Palet Warna Ramadan */
+:root {
+    --deep-green: #0a3d1d;
+    --gold: #ffcf40;
+    --dark-bg: #051e0e;
+}
+
+/* Font Serif untuk Kesan Tradisional/Spiritual */
+.serif-font {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    letter-spacing: 1px;
+}
+
+/* Latar Belakang Ramadan: Gradasi Hijau Tua & Hitam */
+.bg-ramadan {
+    background: radial-gradient(circle at center, var(--deep-green) 0%, var(--dark-bg) 100%);
+    position: relative;
+}
+
+/* Pola Islami sebagai Overlay */
+.islamic-pattern {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmNmNDAiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
+    background-size: 80px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Ornamen Sudut */
+.corner-ornament {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--gold);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.top-left { top: 30px; left: 30px; border-right: none; border-bottom: none; border-radius: 20px 0 0 0; }
+.bottom-right { bottom: 30px; right: 30px; border-left: none; border-top: none; border-radius: 0 0 20px 0; }
+
+/* Styling Tombol Lentera */
+.btn-lantern {
+    transition: transform 0.3s ease;
+    z-index: 10;
+    position: relative;
+}
+
+.btn-lantern:hover {
+    transform: scale(1.1) translateY(-10px);
+}
+
+.lantern {
+    background: #1a1a1a;
+    width: 100px;
+    height: 140px;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    box-shadow: 0 0 30px rgba(255, 207, 64, 0.4);
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.lantern-handle {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 30px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* Partikel Cahaya (Bintang/Cahaya Malaikat) */
+.light-particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Styling Modal Ramadan */
+.modal-content {
+    border: 3px solid var(--gold) !important;
+}
+
+.modal-ornament {
+    position: absolute;
+    top: -30px; right: -30px; width: 100px; height: 100px;
+    background-color: #f1c40f;
+    opacity: 0.1;
+    border-radius: 50%;
+}
