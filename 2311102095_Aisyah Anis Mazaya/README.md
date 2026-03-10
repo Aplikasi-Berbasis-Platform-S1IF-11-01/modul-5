@@ -55,13 +55,13 @@
 JavaScript adalah bahasa pemrograman tingkat tinggi, bersifat dinamis, dan berbasis objek (prototype-based) yang berfungsi sebagai instrumen utama interaktivitas pada sisi klien (client-side). Berbeda dengan bahasa pemrograman tradisional, JavaScript menggunakan sistem pewarisan prototipe yang memungkinkan manipulasi struktur data secara fleksibel saat aplikasi berjalan. Sebagai bahasa yang diatur oleh standar ECMAScript, JavaScript telah berevolusi dari sekadar skrip pemanis menjadi bahasa universal yang mendukung paradigma pemrograman fungsional maupun berorientasi objek (OOP).
 
 Mekanisme Eksekusi dan Event Loop:
-Secara arsitektural JavaScript beroperasi pada mesin Just-In-Time (JIT) seperti V8, yang mengompilasi kode menjadi bahasa mesin secara efisien di dalam peramban. Meskipun bersifat single-threaded (hanya menjalankan satu tugas pada satu waktu), JavaScript mampu menangani operasi berat secara non-blocking melalui mekanisme Event Loop. Fitur asinkronus ini memungkinkan program untuk terus berjalan tanpa menunggu proses input/output atau permintaan data selesai, sehingga menjaga performa aplikasi tetap responsif.
+Secara arsitektural JavaScript beroperasi pada mesin Just-In-Time (JIT) seperti V8, yang mengompilasi kode menjadi bahasa mesin secara efisien di dalam peramban. Meskipun bersifat single-threaded (hanya menjalankan satu tugas pada satu waktu), JavaScript mampu menangani operasi berat secara non-blocking melalui mekanisme Event Loop. Fitur asinkronus ini memungkinkan program untuk terus berjalan tanpa menunggu proses input/output atau permintaan data selesai sehingga menjaga performa aplikasi tetap responsif.
 
 Evolusi dan Implementasi Modern:
 Sejak standarisasi ES6 (ECMAScript 2015), JavaScript mengalami transformasi besar dengan pengenalan fitur modern seperti arrow functions, promises, dan modules. Fleksibilitas ini membuat ekosistem JavaScript tidak lagi terbatas pada frontend, tetapi juga merambah ke sisi server melalui Node.js. Hal ini memungkinkan pengembangan aplikasi secara full-stack menggunakan satu bahasa tunggal, menjadikannya salah satu teknologi paling dominan dalam pengembangan perangkat lunak modern.
 
-## Kode program UNGUIDED
-Berikut adalah kode nya:
+## Kode program UNGUIDED:
+Berikut adalah kode nya
 
 ```html
 <!DOCTYPE html>
@@ -74,6 +74,8 @@ Berikut adalah kode nya:
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
+    <!--- 2311102095 - Aisyah Anis Mazaya -  IF-11-REG01 - Modul_5 --->
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
