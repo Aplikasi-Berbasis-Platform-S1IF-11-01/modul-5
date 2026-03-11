@@ -10,7 +10,7 @@ APLIKASI BERBASIS PLATFORM
 <br>
 
 <h3>
-MODUL 1 <br>
+MODUL 5 <br>
 GIT
 </h3>
 
