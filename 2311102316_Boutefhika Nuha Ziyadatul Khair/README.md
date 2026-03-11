@@ -427,7 +427,9 @@ Contoh code:
 Penjelasan code:
 - Pada baris 6-15, fungsi jQuery menganimasikan “toggle” pada tag <div> yang terdapat pada body HTML berdasarkan tinggi elemen.
 
-# UNGUIDED (Buka kembali halaman ramadan dan tambahkan button atau semacam nya ketika di klik akan menampilkan modal "selamat anda mendapatkan THR" buat se interaktif itu dan sebagus mungkin.)
+# UNGUIDED 
+Buka kembali halaman ramadan dan tambahkan button atau semacam nya ketika di klik akan menampilkan modal "selamat anda mendapatkan THR" buat se interaktif itu dan sebagus mungkin.
+
 ```
 //2311102316
 //Boutefhika Nuha Ziyadatul Khair
