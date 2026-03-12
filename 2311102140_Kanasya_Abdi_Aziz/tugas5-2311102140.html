@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadhan Kareem 1447H - Berbagi THR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sedikit sentuhan interaktif pada tombol agar terlihat hidup */
+        .btn-thr {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-success shadow-sm sticky-top">
+        <div class="container text-center justify-content-center">
+            <a class="navbar-brand fw-bold" href="#">🕌 RAMADHAN DIGITAL</a>
+        </div>
+    </nav>
+
+    <header class="bg-success text-white text-center py-5 border-bottom border-warning border-5">
+        <div class="container py-4">
+            <h1 class="display-3 fw-bold">Ramadhan Penuh Berkah</h1>
+            <p class="lead mb-4">Menebar kebaikan, meraih kemenangan di hari yang fitri.</p>
+            
+            <button type="button" class="btn btn-warning btn-lg fw-bold btn-thr px-5 rounded-pill shadow" 
+                    data-bs-toggle="modal" data-bs-target="#modalTHR">
+                🎁 KLIK UNTUK AMBIL THR!
+            </button>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row text-center g-4">
+            <div class="col-md-6">
+                <div class="p-5 bg-white rounded shadow-sm border-start border-success border-5 h-100">
+                    <h3 class="fw-bold">Buka Puasa</h3>
+                    <p class="text-muted">Jangan lupa menyegerakan berbuka dengan yang manis-manis.</p>
+                    <span class="badge bg-success fs-5">17:55 WIB</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-5 bg-white rounded shadow-sm border-start border-warning border-5 h-100">
+                    <h3 class="fw-bold">Sahur</h3>
+                    <p class="text-muted">Makan sahur memberikan keberkahan untuk aktivitas puasamu.</p>
+                    <span class="badge bg-warning text-dark fs-5">04:15 WIB</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modalTHR" tabindex="-1" aria-labelledby="modalTHRLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-warning text-dark justify-content-center">
+                    <h5 class="modal-title fw-bold" id="modalTHRLabel">🎉 KEJUTAN RAMADHAN 🎉</h5>
+                </div>
+                <div class="modal-body text-center py-5 px-4">
+                    <h1 class="display-1 mb-4">🧧</h1>
+                    <h2 class="fw-bold text-success">Selamat!</h2>
+                    <h4 class="mb-4">Anda Mendapatkan THR Berupa:</h4>
+                    
+                    <div class="card bg-light border-dashed mb-4">
+                        <div class="card-body">
+                            <h3 class="text-primary fw-bold">Voucher Kebahagiaan 100%</h3>
+                            <p class="small text-muted">Berlaku selamanya untuk diri sendiri dan keluarga.</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-secondary">"Semoga Ramadhan kali ini membawa keberkahan dan kebahagiaan yang melimpah untukmu!"</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0">
+                    <button type="button" class="btn btn-success btn-lg px-5 rounded-pill" data-bs-dismiss="modal">Alhamdulillah, Terima Kasih!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 bg-dark text-white-50">
+        <small>&copy; 2026 Ramadhan Interactive - Dibuat dengan Bootstrap 5</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
