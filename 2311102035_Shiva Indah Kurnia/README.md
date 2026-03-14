@@ -5,15 +5,15 @@
   <h3>MODUL 5 <br> JAVASCRIPT</h3>
   <br />
   <br />
-  <img src="assets/logo.jpeg" alt="Logo" width="300"> 
+  <img src="assets/TU.jpg" alt="Logo" width="300"> 
   <br />
   <br />
   <br />
   <br />
   <h3>Disusun Oleh :</h3>
   <p>
-    <strong>Mohammad Alfan Naraya</strong><br>
-    <strong>2311102170</strong><br>
+    <strong>Shiva Indah Kurnia</strong><br>
+    <strong>2311102035</strong><br>
     <strong>S1 IF-11-REG01</strong>
   </p>
   <br />
@@ -49,67 +49,96 @@ Fenomena ini melahirkan konsep Full-Stack JavaScript, di mana pengembang dapat m
 ### Kode HTML
 
 ````html
-<div class="card shadow-lg border-0 rounded-5">
-    <div class="card-header bg-white border-0 pt-5">
-        <i class="bi bi-moon-stars-fill text-warning display-2"></i>
-        <h2 class="fw-bold text-success mt-3 mb-0">RAMADAN KAREEM</h2>
-    </div>
-    <div class="card-body">
-        <button class="btn-thr" data-bs-toggle="modal" data-bs-target="#modalTHR">
-            Pencet dong kak
-        </button>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Hub - Bright Edition</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Amiri:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="confetti-canvas"></canvas>
 
-<div class="modal fade" id="modalTHR">
-    <div class="modal-content shadow">
-        <div class="modal-body">
-            <h2>ALHAMDULILLAH!</h2>
-            <h3>Rp. 500.000</h3>
-        </div>
-    </div>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-dark pt-4">
+        </nav>
+
+    <main class="container py-5">
+        <button class="btn btn-thr text-dark animate__animated animate__pulse animate__infinite" 
+                data-bs-toggle="modal" data-bs-target="#thrModal" onclick="startConfetti()">
+            <i class="bi bi-gift-fill me-2"></i> KLAIM THR KAMU!
+        </button>
+    </main>
+
+    <div class="modal fade" id="thrModal" tabindex="-1">...</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script src="main.js"></script>
+</body>
+</html>
 ````
 
 ### Kode CSS (`style.css`)
 
 ```css
-<style>
-    /* Membuat tombol bergerak naik-turun otomatis */
-    @keyframes floating {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-    }
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background: radial-gradient(circle at top right, #0f172a, #020617);
+    color: #f8fafc;
+}
 
-    .btn-thr {
-        animation: floating 2s infinite ease-in-out;
-        transition: all 0.3s ease;
-    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
 
-    /* Efek saat tombol diarahkan kursor */
-    .btn-thr:hover {
-        transform: scale(1.1) rotate(2deg);
-    }
-</style>
+.btn-thr {
+    background: linear-gradient(45deg, #fbbf24, #f59e0b);
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    transition: all 0.3s ease;
+}
 ```
 
 ### Kode JS (`main.js`)
 
 ```javascript
-<script>
-    const modal = document.getElementById('modalTHR');
+// Fungsi suara "Cling"
+function playCling() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
 
-    // Listener: Jalankan fungsi saat modal selesai muncul (shown)
-    modal.addEventListener('shown.bs.modal', () => {
-        confetti({
-            particleCount: 150,     // Jumlah kertas
-            spread: 70,             // Jangkauan ledakan
-            origin: { y: 0.6 },     // Titik munculnya ledakan
-            colors: ['#198754', '#ffc107', '#ffffff'] // Hijau, Kuning, Putih
-        });
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.5);
+}
+
+// Fungsi Ledakan Confetti
+function startConfetti() {
+    playCling(); // Panggil suara
+
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#fbbf24', '#ffffff', '#10b981']
     });
-</script>
+}
 ```
 
 ### Hasil Tampilan (Screenshot)
@@ -119,33 +148,35 @@ Fenomena ini melahirkan konsep Full-Stack JavaScript, di mana pengembang dapat m
 
 ### Penjelasan code:
 
-#### 1. HTML (`modul5.html`)
-Komponen ini berfungsi sebagai kerangka dasar untuk menampilkan konten ucapan dan jendela kejutan.
-* **Card Component:** Menggunakan kelas `.card` dari Bootstrap untuk menciptakan kontainer ucapan yang modern.
-* **Modal Pop-up:** Menggunakan ID `#modalTHR` sebagai kontainer tersembunyi yang akan muncul membawa pesan kejutan.
-* **Bootstrap Icons:** Integrasi ikon seperti `bi-moon-stars-fill` untuk memperkuat nuansa religius.
+#### 1. HTML: Rangka Utama (Struktur)
+Bagian ini menentukan apa saja yang tampil di layar.
+- (nav) & navbar: Bagian atas yang berisi logo "RAMADAN 1447" dan penunjuk tanggal. Memakai kelas-kelas dari Bootstrap agar langsung rapi tanpa bikin CSS dari nol.
+- (button class="btn-thr"): Ini bagian utamanya. Tombol ini punya atribut data-bs-toggle="modal" yang fungsinya menyuruh Bootstrap memunculkan kotak (modal) saat diklik.
+- Jadwal Sholat (Cards): Memakai sistem Grid Bootstrap (col-md-3) supaya jadwalnya berjejer rapi di laptop, tapi bakal bertumpuk vertikal kalau dibuka di HP (responsive).
+- (div class="modal"): Ini adalah "kotak rahasia" yang awalnya tersembunyi. Dia baru akan muncul (pop-up) kalau tombol THR diklik. Isinya adalah ucapan selamat.
 
 ---
 
-#### 2. Styling CSS (`style.css`)
-
-Bagian ini bertanggung jawab atas estetika visual dan memberikan "kehidupan" pada elemen statis.
-* **Floating Animation:** Menggunakan `@keyframes` kustom untuk membuat tombol bergerak naik-turun secara halus, memberikan kesan dinamis pada halaman.
-* **Hover Effects:** Menambahkan transisi `scale` (pembesaran) dan `rotate` (perputaran) saat tombol disentuh untuk meningkatkan *User Experience* (UX) yang responsif.
-* **Gradient Styling:** Menggunakan utilitas `.bg-gradient` pada latar belakang untuk menciptakan kedalaman visual (depth) agar tampilan tidak terlihat datar.
+#### 2. CSS: Estetika (Tampilan)
+Bagian ini yang bikin halaman kamu kelihatan "mahal" dan modern.
+- Radial Gradient: Pada body, Memakai warna biru gelap ke hitam (#0f172a ke #020617) supaya teks kuning emasnya terlihat menyala (kontras).
+- Glassmorphism (.glass-card): Ini teknik desain modern yang pakai backdrop-filter: blur(). Fungsinya bikin kartu jadwal sholat kelihatan seperti kaca transparan di atas latar belakang.
+- Hover Effects: Kelas .card-bright:hover bikin kartu sedikit terangkat saat disentuh kursor (translateY(-5px)). Ini memberikan feedback ke user kalau elemen itu interaktif.
+- Button Glow: Tombol THR diberi box-shadow warna kuning yang berpendar dan animasi pulse dari Animate.css supaya user gatal ingin klik.
 
 ---
 
-#### 3. Fungsi JavaScript (`script.js`)
+#### 3. JavaScript: Logika & Interaksi
+Ini yang bikin halaman "hidup" dan nggak kaku.
+1. playCling() (Audio Synthesis):
+   - Tidak pakai file .mp3 eksternal tetapi memakai Web Audio API untuk membuat suara dari nol.
+   - oscillator.frequency diatur tinggi (1200Hz) lalu menurun cepat, menciptakan suara "ting!" yang bersih saat tombol diklik.
 
-Komponen JavaScript pada proyek ini berfungsi sebagai "otak" yang menangani interaksi pengguna dan memicu efek perayaan secara dinamis.
+2. startConfetti():
+   - Fungsi ini memanggil library pihak ketiga (canvas-confetti).
+   - Mengatur particleCount dan spread supaya ledakan kertasnya meriah tapi tetap enak dilihat.
 
-* **Integrasi Library Canvas-Confetti:** Menggunakan library eksternal untuk menghasilkan simulasi fisik partikel (kembang api kertas) yang ringan dan berperforma tinggi.
-* **Event Listener (`shown.bs.modal`):** Logika ini memastikan bahwa efek visual hanya akan dimulai tepat setelah transisi modal Bootstrap selesai terbuka sepenuhnya. Hal ini memberikan efek kejutan (*surprise*) yang maksimal.
-* **Custom Configuration:** Partikel dikonfigurasi secara khusus untuk menciptakan estetika yang sesuai:
-    * `particleCount`: Menentukan kepadatan ledakan kertas.
-    * `spread`: Mengatur luas jangkauan sebaran partikel ke seluruh layar.
-    * `colors`: Menggunakan palet warna tema (Hijau, Kuning/Emas, Putih).
+3. onclick="startConfetti()": Ini adalah jembatan antara HTML dan JS. Saat tombol di HTML diklik, dia langsung teriak ke JS: "Woi, jalankan fungsi suara dan confetti sekarang!"
 
 ## Refrensi
 
