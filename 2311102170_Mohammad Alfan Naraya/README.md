@@ -44,10 +44,8 @@ Seiring berjalannya waktu, peran JavaScript telah melampaui batas browser (sisi 
 
 Fenomena ini melahirkan konsep Full-Stack JavaScript, di mana pengembang dapat membangun seluruh arsitektur aplikasi—mulai dari antarmuka pengguna, logika server, hingga pengelolaan basis data—hanya dengan satu bahasa pemrograman yang sama. Efisiensi ini tidak hanya mempercepat proses pengembangan, tetapi juga memudahkan sinkronisasi kode di seluruh ekosistem aplikasi modern.
 
-````
 ### 2. Penjelasan Kode HTML, CSS, dan JS
-
-
+````
 ### Kode HTML
 
 ````html
