@@ -1,0 +1,313 @@
+<div align="center">
+
+# LAPORAN PRAKTIKUM
+
+## ALGORITMA PEMROGRAMAN
+
+### MODUL 5
+
+### JavaScript & jQuery
+
+<img src="aset/logo.PNG" alt="logo" width="220">
+
+### Disusun Oleh
+
+**Agnes Refilina Fiska**  
+2311102126  
+S1 IF-11-01
+
+### Dosen Pengampu
+
+**Dimas Fanny Hebrasianto Permadi, S.ST., M.Kom**
+
+### Asisten Praktikum
+
+Apri Pandu Wicaksono
+Rangga Pradarrell Fathi
+
+### Laboratorium High Performance
+
+Fakultas Informatika
+Universitas Telkom Purwokerto
+2026
+
+</div>
+
+---
+
+# 1. Dasar Teori
+
+**JavaScript (JS)** merupakan bahasa pemrograman esensial yang memberikan "jiwa" dan fungsi interaktif pada sebuah situs web. Jika HTML membangun struktur dan CSS mengatur estetika, maka JavaScript berperan sebagai penggerak yang mengubah halaman statis menjadi aplikasi yang dinamis dan adaptif terhadap aksi pengguna.
+
+Inti dari kekuatan JavaScript terletak pada kemampuannya berinteraksi dengan **Document Object Model (DOM)**. DOM adalah sebuah antarmuka pemrograman yang memetakan seluruh elemen HTML ke dalam struktur pohon (tree structure), sehingga setiap komponen dapat diakses dan dimodifikasi secara programatik.
+
+Melalui manipulasi DOM, JavaScript memiliki kendali penuh untuk:
+
+* Identifikasi Elemen: Menemukan dan mengambil data dari elemen HTML tertentu.
+
+* Modifikasi Konten: Mengubah teks, gambar, atau atribut tanpa perlu memuat ulang seluruh halaman.
+
+* Struktur Dinamis: Menambah atau membuang elemen secara instan sesuai kebutuhan logika aplikasi.
+
+* Kontrol Estetika: Mengintervensi aturan CSS untuk mengubah tampilan secara langsung saat aplikasi berjalan.
+
+Seluruh aksi tersebut umumnya dijalankan berdasarkan Event Handling—sebuah mekanisme di mana skrip menunggu pemicu tertentu dari pengguna, seperti penekanan tombol (click), input data pada formulir (submit), hingga deteksi pergerakan kursor (hover).
+
+Di era modern, peran JavaScript telah meluas melampaui batas peramban **(Client-side)**. Dengan hadirnya runtime environment seperti **Node.js**, JavaScript kini dapat beroperasi di sisi peladen **(Server-side)**. Transformasi ini memungkinkan para pengembang untuk membangun arsitektur aplikasi full-stack yang utuh hanya dengan menguasai satu ekosistem bahasa pemrograman yang sama.
+
+---
+
+# 2. Penjelasan Kode (Unguided)
+
+Berikut merupakan implementasi **JavaScript pada halaman web** yang dipadukan dengan framework Bootstrap untuk membuat tampilan lebih menarik dan interaktif.
+
+## Kode HTML (`Tugas5.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Kareem - Tugas 3 & 4 (Bonus Edition)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --dark-green: #064e3b;
+            --gold: #d4af37;
+            --gold-light: #f9e297;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f9f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .arabic { font-family: 'Amiri', serif; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1542618953-29497042a5bc?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            border-bottom: 8px solid var(--gold);
+        }
+
+        /* Tombol THR Berdenyut */
+        .btn-thr {
+            background: var(--gold);
+            color: var(--dark-green);
+            font-weight: bold;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse-animation 2s infinite;
+        }
+
+        .btn-thr:hover {
+            background: var(--gold-light);
+            transform: scale(1.1);
+            color: #000;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(212, 175, 55, 0.7); }
+            100% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+        }
+
+        /* Modal Custom */
+        .modal-content {
+            border: none;
+            border-radius: 25px;
+            background: #fff;
+        }
+        .modal-header-custom {
+            background: var(--dark-green);
+            color: var(--gold);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Efek Salju/Konfeti Sederhana dengan CSS */
+        .bonus-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: #ff4757;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="ramadanAudio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container text-center">
+            <span class="navbar-brand mx-auto h1 arabic">🌙 Ramadan Kareem 1447H</span>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h2 class="arabic display-1 text-warning mb-0 animate__animated animate__fadeInDown">رمضان كريم</h2>
+            <h1 class="display-4 fw-bold mb-4">Selamat Menunaikan Ibadah Puasa</h1>
+            <p class="lead mb-5 opacity-75">Bulan penuh berkah, pintu ampunan dibuka lebar.</p>
+            
+            <button type="button" class="btn-thr" onclick="playMusic()" data-bs-toggle="modal" data-bs-target="#modalTHR">
+                🎁 AMBIL BONUS THR & BERKAH
+            </button>
+        </div>
+    </header>
+
+    <section class="container py-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="p-4 bg-white shadow rounded-4 border-0">
+                    <h3 class="mb-3">🕌</h3>
+                    <h5 class="fw-bold">Ibadah Tarawih</h5>
+                    <p class="small text-muted">Menghidupkan malam dengan shalat berjamaah.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white shadow rounded-4 border-top border-4 border-warning">
+                    <h3 class="mb-3">📖</h3>
+                    <h5 class="fw-bold">Tadarus Online</h5>
+                    <p class="small text-muted">Khatamkan Al-Qur'an di mana saja dan kapan saja.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white shadow rounded-4 border-0">
+                    <h3 class="mb-3">🍲</h3>
+                    <h5 class="fw-bold">Sedekah Buka</h5>
+                    <p class="small text-muted">Berbagi kebahagiaan dengan memberi paket takjil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade animate__animated animate__zoomIn" id="modalTHR" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header-custom">
+                    <div class="bonus-badge">BONUS +</div>
+                    <h1 class="display-3 mb-0">💸</h1>
+                    <h2 class="fw-bold arabic">بارك الله</h2>
+                    <h3 class="fw-bold">SELAMAT!</h3>
+                </div>
+                <div class="modal-body text-center p-5">
+                    <p class="fs-5 mb-1">Anda mendapatkan THR & Bonus Ramadan:</p>
+                    <div class="display-5 fw-bold text-success mb-2">Rp 2.500.000</div>
+                    <p class="badge bg-warning text-dark px-3 py-2">Terverifikasi Berkah ✨</p>
+                    
+                    <div class="mt-4 p-3 bg-light rounded-3">
+                        <p class="text-muted small mb-0">"Barangsiapa memberi makan berbuka, maka baginya pahala seperti orang yang berpuasa tersebut."</p>
+                    </div>
+                    
+                    <hr class="my-4">
+                    <button type="button" class="btn btn-success btn-lg w-100 rounded-pill shadow" data-bs-dismiss="modal">Alhamdulillah, Ambil!</button>
+                    <p class="mt-3 small text-muted">Audio Ramadan sedang diputar 🎵</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <p class="mb-0 opacity-50 small">Tugas 4 Web: Ramadan Interactive Plus Bonus Audio & Animasi</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("ramadanAudio");
+            audio.play();
+        }
+
+        // Bonus: Menampilkan pesan di console saat modal dibuka
+        var myModalEl = document.getElementById('modalTHR');
+        myModalEl.addEventListener('shown.bs.modal', function () {
+            console.log("THR Berhasil Diambil!");
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+# Hasil Tampilan
+
+### Tampilan Halaman
+
+![Hasil Tampilan 1](aset/1.PNG)
+
+### Tampilan Modal
+
+![Hasil Tampilan 2](aset/2.PNG)
+
+---
+
+# 3. Penjelasan Kode
+
+### 1. Integrasi Library Pihak Ketiga
+
+Selain menggunakan Bootstrap 5, kode ini memanfaatkan library tambahan untuk mempercantik visual:
+
+- Animate.css: Digunakan untuk memberikan efek animasi instan pada elemen. Contohnya pada kelas animate__animated animate__fadeInDown yang membuat teks judul "turun perlahan" saat halaman dimuat.
+
+- Google Fonts: Menggunakan kombinasi font 'Amiri' (nuansa religius) dan 'Lato' (nuansa modern).
+
+---
+
+### 2. Implementasi Audio (Multimedia)
+
+Terdapat tag `<audio>` dengan ID `ramadanAudio` yang disembunyikan. Audio ini tidak langsung berputar (untuk mematuhi kebijakan peramban modern), melainkan dipicu oleh fungsi JavaScript `playMusic()` ketika pengguna mengeklik tombol THR.
+
+---
+
+### 3. Logika JavaScript dan DOM
+
+Bagian skrip di akhir dokumen menjalankan dua fungsi penting yang mendemonstrasikan manipulasi halaman secara dinamis:
+
+- **Fungsi** `playMusic()`: Mengakses elemen audio melalui DOM (document.getElementById) dan menjalankan metode .play().
+- **Event Listener**: Menggunakan `addEventListener` khusus Bootstrap `(shown.bs.modal)`. Ini memungkinkan program mendeteksi kapan jendela pop-up benar-benar muncul di layar, kemudian mencetak pesan ke dalam console peramban sebagai bentuk verifikasi sistem.
+
+---
+
+### 4. Estetika CSS Tingkat Lanjut
+
+- Bonus Badge: Menggunakan `properti position: absolute` dan `transform: rotate(15deg)` untuk membuat label "BONUS +" yang miring dan menempel di sudut modal, memberikan kesan seperti stiker fisik.
+
+- Hover Effects: Tombol THR memiliki efek `transform: scale(1.1)`, yang berarti tombol akan membesar 10% saat disentuh kursor, memberikan umpan balik visual yang interaktif.
+
+- Modal Animation: Modal tidak hanya muncul seketika, tetapi menggunakan animasi `animate__zoomIn` dari library Animate.css untuk transisi yang lebih halus dan premium.
+
+---
+
+# Referensi
+
+* [Materi Modul 5](https://drive.google.com/file/d/1J27NhEO2MbOF9DetZmOtEGAcPkczzm1r/view)
