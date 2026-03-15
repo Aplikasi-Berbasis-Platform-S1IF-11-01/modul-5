@@ -1,0 +1,89 @@
+body{
+background:linear-gradient(135deg,#5b1a2f,#7c2f3e,#9caf9a);
+min-height:100vh;
+font-family:Arial, Helvetica, sans-serif;
+overflow:hidden;
+}
+
+/* Lampu Ramadhan */
+
+.ramadan-lights{
+position:absolute;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-evenly;
+padding:15px;
+}
+
+.ramadan-lights span{
+width:12px;
+height:25px;
+background:#ffd166;
+border-radius:50%;
+box-shadow:0 0 15px #ffd166;
+animation:blink 1.5s infinite alternate;
+}
+
+@keyframes blink{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+/* Bulan */
+
+.moon{
+position:absolute;
+top:80px;
+right:80px;
+width:120px;
+height:120px;
+background:#ffd166;
+border-radius:50%;
+box-shadow:0 0 40px rgba(255,209,102,0.6);
+}
+
+/* Card */
+
+.ramadan-card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+color:white;
+max-width:420px;
+}
+
+/* Judul */
+
+.title{
+color:#ffd166;
+text-shadow:0 0 10px rgba(255,209,102,0.7);
+}
+
+/* Tombol */
+
+.thr-btn{
+background:#ffd166;
+border:none;
+color:#5b1a2f;
+font-weight:bold;
+transition:0.3s;
+}
+
+.thr-btn:hover{
+background:#ffe08a;
+transform:scale(1.05);
+}
+
+/* Modal */
+
+.thr-modal{
+background:#5b1a2f;
+color:white;
+border-radius:15px;
+}
+
+.thr-value{
+color:#ffd166;
+font-size:28px;
+font-weight:bold;
+}
