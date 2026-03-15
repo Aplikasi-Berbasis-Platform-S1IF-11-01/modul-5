@@ -911,5 +911,7 @@ berdasarkan tinggi elemen.
 </html>
 ```
 
+Kode ini merupakan halaman web ucapan Ramadan Kareem 1447 H. Pada bagian <head> terdapat pemanggilan Bootstrap, Bootstrap Icons, Google Fonts, serta CSS untuk mengatur tema warna, tipografi, background gambar dengan efek gradient, dan tata letak agar konten berada di tengah halaman. Di dalam <body> terdapat bagian hero yang menampilkan teks ucapan Ramadan, tulisan Arab, doa, serta tombol “Ada yang istimewa untukmu”. Ketika tombol tersebut diklik, JavaScript dengan jQuery akan menampilkan modal THR berisi ucapan Idulfitri dan jumlah THR, serta memicu animasi confetti menggunakan library canvas-confetti untuk memberikan efek perayaan. Modal dapat ditutup melalui tombol, klik di luar kotak, atau menekan tombol Escape.
+
 ### Output:
 <img src="asset/output.png"/>
