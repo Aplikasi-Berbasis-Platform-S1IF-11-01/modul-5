@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 - Ramadhan THR </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        .modal-custom {
+            background: linear-gradient(135deg, #115d38, #198754, #20c997);
+            border: 4px solid #ffc107;
+            border-radius: 25px;
+            color: white;
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
+        }
+
+        /* 2311102138_RICO ADE PRATAMA */
+        .thr-amount {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffc107;
+            display: none;
+            opacity: 0;
+        }
+
+        /* 1. Animasi tombol berdenyut */
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
+                transform: scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+                transform: scale(1);
+            }
+        }
+
+        .btn-glow {
+            animation: pulseGlow 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            animation: none;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 2. Animasi Jumpscare untuk Nominal THR */
+        @keyframes jumpscareReveal {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            30% {
+                transform: scale(4) rotate(10deg);
+                opacity: 1;
+                text-shadow: 0 0 50px red;
+                color: white;
+            }
+
+            50% {
+                transform: scale(0.8) rotate(-5deg);
+                color: #ffc107;
+                text-shadow: none;
+            }
+
+            70% {
+                transform: scale(1.1) rotate(2deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+                text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4), 0 0 15px #ffc107;
+            }
+        }
+
+        .animate-jumpscare {
+            display: block !important;
+            animation: jumpscareReveal 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-success min-vh-100 d-flex justify-content-center align-items-center position-relative overflow-hidden text-center">
+    <div class="position-absolute top-0 start-0 m-4 display-1 opacity-50">⭐</div>
+    <div class="position-absolute top-0 end-0 m-4 display-3 opacity-50">🌙</div>
+    <div class="position-absolute bottom-0 start-0 m-4 display-4 opacity-50">✨</div>
+    <div class="position-absolute bottom-0 end-0 m-4 display-1 opacity-50">🕌</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="card shadow-lg border border-5 border-warning rounded-4 bg-white p-4 p-md-5 mx-3">
+                    <h1 class="display-6 fw-bold text-success mb-4">🌙 Marhaban Ya Ramadhan</h1>
+                    <p class="text-dark fs-6 mb-3 px-md-3">
+                        Selamat Menunaikan Ibadah Puasa 1447 Hijriah ditahun 2026 ini. Semoga amal ibadah kita diterima
+                        oleh Allah SWT dan diberikan kelancaran hingga hari kemenangan tiba.
+                    </p>
+                    <p class="text-secondary fst-italic mb-4 px-md-4">
+                        "Minal Aidin Wal Faizin, Mohon Maaf Lahir dan Batin. Kulo Rico Ade Pratama ngaturaken sugeng
+                        riyadi, nyuwun agungin Pangapunten sedaya kalepatan kulo. Mugi-mugi amal ibadah kita dipuntampi
+                        dening Allah SWT." ~ ricoolganteng123
+                    </p>
+                    <button type="button"
+                        class="btn btn-warning btn-lg fw-bold shadow rounded-pill px-5 py-3 mb-4 text-dark btn-glow"
+                        data-bs-toggle="modal" data-bs-target="#thrModal" id="btnThr">
+                        🎁 Buka Amplop THR!
+                    </button>
+                    <hr class="border-success opacity-25 w-75 mx-auto mb-4">
+                    <div>
+                        <h5 class="fw-bold text-dark mb-1">RICO ADE PRATAMA</h5>
+                        <p class="text-secondary fw-semibold mb-0">2311102138</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="thrModal" tabindex="-1" aria-labelledby="thrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content modal-custom shadow-lg">
+                <div class="modal-header border-0 pb-0 justify-content-center">
+                    <h2 class="modal-title fw-bold display-6" id="thrModalLabel">🎉 ALHAMDULILLAH! 🎉</h2>
+                </div>
+                <div class="modal-body text-center py-5">
+                    <p class="fs-4 mb-3 text-light">Selamat, karna sampeyan orang baek kulo ngaweh THR Spesial sebesar:
+                    </p>
+                    <div class="thr-amount my-4" id="nominalThr">Rp 1.000.000</div>
+                    <p class="mt-4 fs-5 text-light opacity-75">Gas gunakan untuk menggacha skin legend! 🤣</p>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center pb-4">
+                    <button type="button" class="btn btn-light btn-lg rounded-pill fw-bold px-5 text-success shadow"
+                        data-bs-dismiss="modal">Tutup Amplop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /* 3. Efek Confetti saat tombol diklik */
+            $('#btnThr').on('click', function () {
+                var duration = 3000;
+                var end = Date.now() + duration;
+                (function frame() {
+                    confetti({
+                        particleCount: 5,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 },
+                        colors: ['#ffc107', '#28a745', '#ffffff']
+                    });
+                    confetti({
+                        particleCount: 5,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 },
+                        colors: ['#ffc107', '#28a745', '#ffffff']
+                    });
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            });
+            /* 2311102138_RICO ADE PRATAMA */
+            $('#thrModal').on('show.bs.modal', function () {
+                $("#nominalThr").removeClass("animate-jumpscare").hide();
+            });
+            $('#thrModal').on('shown.bs.modal', function () {
+                setTimeout(function () {
+                    $("#nominalThr").addClass("animate-jumpscare");
+                }, 400);
+            });
+            $('#thrModal').on('hidden.bs.modal', function () {
+                $("#nominalThr").removeClass("animate-jumpscare").hide();
+            });
+
+        });
+    </script>
+</body>
+
+</html>

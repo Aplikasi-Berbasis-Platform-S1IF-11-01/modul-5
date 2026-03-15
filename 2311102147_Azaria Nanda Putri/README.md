@@ -1,0 +1,416 @@
+"" 
+<div align="center">
+  <br />
+  <h1>LAPORAN PRAKTIKUM <br>APLIKASI BERBASIS PLATFORM</h1>
+  <br />
+  <h2>MODUL 5 <br> Javascript & JQuery </h2>
+  <br />
+  <br />
+  <img src="assets/Logo.png" alt="Logo" width="300"> 
+  <br />
+  <br />
+  <br />
+  <h3>Disusun Oleh :</h3>
+  <p>
+    <strong>Azaria Nanda Putri</strong><br>
+    <strong>2311102147</strong><br>
+    <strong>S1 IF-11-REG 01</strong>
+  </p>
+  <br />
+  <h3>Dosen Pengampu :</h3>
+  <p>
+    <strong>Dimas Fanny Hebrasianto Permadi, S.ST., M.Kom</strong>
+  </p>
+  <br />
+  <br />
+    <h4>Asisten Praktikum :</h4>
+    <strong> Apri Pandu Wicaksono </strong> <br>
+    <strong>Rangga Pradarrell Fathi</strong>
+  <br />
+  <h2>LABORATORIUM HIGH PERFORMANCE
+ <br>FAKULTAS INFORMATIKA <br>UNIVERSITAS TELKOM PURWOKERTO <br>2026</h2>
+</div>
+
+---
+
+
+# 1. Dasar Teori  
+
+## Karakteristik JavaScript  
+JavaScript merupakan bahasa pemrograman berbasis *scripting* yang digunakan untuk menambahkan fungsi interaktif pada halaman web. Bahasa ini berjalan di sisi klien (*client-side*) sehingga mampu merespons tindakan pengguna secara langsung tanpa perlu memuat ulang halaman. Melalui JavaScript, elemen HTML dapat dimanipulasi secara dinamis, misalnya menampilkan konten tertentu, mengubah teks, maupun menambahkan efek animasi sehingga halaman web tidak hanya bersifat statis.
+
+## Struktur Objek dan Fungsi  
+Dalam JavaScript, objek dapat dibuat dengan berbagai metode, salah satunya menggunakan *object literal* yang ditulis menggunakan tanda kurung kurawal `{}`. Struktur ini memungkinkan data disimpan dalam bentuk pasangan *key* dan *value*. Selain itu, fungsi (*function*) memiliki peran penting dalam pengembangan program JavaScript karena digunakan untuk mengelompokkan sekumpulan perintah yang dapat dipanggil kembali saat diperlukan. Dengan memanfaatkan fungsi, kode program menjadi lebih terstruktur, mudah dipelihara, dan dapat digunakan kembali pada bagian lain dari aplikasi.
+
+## Pengenalan jQuery  
+jQuery merupakan pustaka (*library*) JavaScript yang dirancang untuk mempermudah proses manipulasi *Document Object Model* (DOM), pengelolaan *event*, serta pembuatan animasi pada halaman web. Library ini memiliki prinsip *write less, do more*, yang berarti pengembang dapat menulis kode lebih singkat dibandingkan JavaScript murni. Selain itu, jQuery menyediakan berbagai metode yang memudahkan proses seleksi elemen HTML, pengolahan interaksi pengguna, serta penambahan efek visual secara dinamis.
+
+---
+
+# 2. Unguided  
+
+## 1. Implementasi JavaScript & jQuery pada Website Ramadan Kareem  
+
+Program berikut merupakan implementasi halaman web bertema **Ramadan Kareem** yang dibuat menggunakan **HTML, CSS, dan jQuery**. Website ini menampilkan halaman ucapan Ramadan dengan desain visual modern serta fitur interaktif berupa **popup THR** yang muncul ketika pengguna menekan tombol tertentu.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Kareem 1447H - Azaria Nanda Putri</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        :root {
+            --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --royal-blue: #001a33;
+            --marble-white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--marble-white);
+            color: var(--royal-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HERO SECTION --- */
+        .hero-ramadan {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #ffffff 0%, #f0f5ff 100%);
+            padding: 80px 0;
+        }
+
+        .badge-spiritual {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1.5px solid #b38728;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            color: #b38728;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        .visual-lamp {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto 40px;
+            display: block;
+            filter: drop-shadow(0 15px 30px rgba(179, 135, 40, 0.4));
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+        }
+
+        .gold-text {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* --- BUTTON THR --- */
+        .btn-thr {
+            background: var(--gold);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            color: #4a3300;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(179, 135, 40, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-thr:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(179, 135, 40, 0.5);
+        }
+
+        /* --- MODAL / POP UP --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 26, 51, 0.85);
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 4px solid #b38728;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            /* Animasi CSS tetap digunakan untuk efek pop */
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-content h2 { font-family: 'Cinzel', serif; color: #b38728; margin-bottom: 15px; font-size: 2rem; }
+        .modal-content p { font-size: 1.2rem; margin-bottom: 30px; color: #333; }
+        .amount { display: block; font-size: 2rem; font-weight: 700; color: #28a745; margin: 10px 0; }
+
+        .btn-ambil {
+            background: var(--royal-blue);
+            color: #fcf6ba;
+            border: 2px solid #b38728;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-ambil:hover { background: #28a745; border-color: #28a745; color: white; transform: translateY(-3px); }
+
+        /* --- AMALAN SECTION --- */
+        .traditions-section {
+            padding: 100px 0;
+            background-color: var(--royal-blue);
+            color: #fff;
+        }
+
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; }
+        .divider-gold { width: 100px; height: 3px; background: var(--gold); margin: 15px auto; }
+
+        .grid-amalan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .glass-card-islamic {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(191, 149, 63, 0.2);
+            padding: 50px 35px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .glass-card-islamic:hover { transform: translateY(-10px); border-color: #fcf6ba; }
+        .icon-box { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .glass-card-islamic h3 { font-family: 'Cinzel', serif; color: #fcf6ba; margin-bottom: 15px; }
+
+        footer {
+            background-color: #000a1a;
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(191, 149, 63, 0.4);
+        }
+
+        .footer-wish {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fcf6ba;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+    </style>
+</head>
+<body>
+
+    <header class="hero-ramadan">
+        <div class="container">
+            <div class="badge-spiritual">Ramadan Mubarak 1447H</div>
+            <img src="ramadan-lamp.png" alt="Ramadan Decoration" class="visual-lamp">
+
+            <h1 class="main-title">
+                <span class="gold-text">PURIFY</span> THE HEART<br>
+                ENLIGHTEN <span class="gold-text">THE SOUL</span>
+            </h1>
+            
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                "Dunia tidak akan sampai 1500 Hijriah. Manfaatkan setiap detik yang tersisa untuk berbuat baik."
+            </p>
+
+            <button class="btn-thr" id="btnOpenThr">🎁 Berkah THR dari Azaria</button>
+        </div>
+    </header>
+
+    <div class="modal-overlay" id="thrModal">
+        <div class="modal-content">
+            <span style="font-size: 4.5rem; display: block; margin-bottom: 10px;">💰</span>
+            <h2>Alhamdulillah!</h2>
+            <p>Selamat! Anda berhak mendapatkan Berkah THR sebesar:</p>
+            <span class="amount">Rp 500.000</span>
+            <button class="btn-ambil" id="btnClaimThr">Ambil THR Mu</button>
+        </div>
+    </div>
+
+    <section class="traditions-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Amalan Utama</h2>
+                <div class="divider-gold"></div>
+            </div>
+
+            <div class="grid-amalan">
+                <div class="glass-card-islamic">
+                    <span class="icon-box">📖</span>
+                    <h3>Khatam Al-Quran</h3>
+                    <p>Jadikan Al-Quran sahabat karibmu sebelum ia diangkat dari muka bumi.</p>
+                </div>
+                <div class="glass-card-islamic">
+                    <span class="icon-box">📿</span>
+                    <h3>Zikir & Istighfar</h3>
+                    <p>Sucikan lisan dengan asma Allah di setiap hembusan napas yang tersisa.</p>
+                </div>
+                <div class="glass-card-islamic">
+                    <span class="icon-box">⏳</span>
+                    <h3>Urgensi Waktu</h3>
+                    <p>Ingatlah batas 1500 Hijriah. Jangan tunda amal salehmu hingga esok hari.</p>
+                </div>
+                <div class="glass-card-islamic">
+                    <span class="icon-box">🌙</span>
+                    <h3>Qiyamul Lail</h3>
+                    <p>Hidupkan malam-malam terakhir dengan sujud panjang dan air mata tobat.</p>
+                </div>
+                <div class="glass-card-islamic">
+                    <span class="icon-box">💰</span>
+                    <h3>Sedekah Jariyah</h3>
+                    <p>Tanamlah kebaikan yang pahalanya terus mengalir bahkan setelah dunia berakhir.</p>
+                </div>
+                <div class="glass-card-islamic">
+                    <span class="icon-box">✨</span>
+                    <h3>Lailatul Qadar</h3>
+                    <p>Berburulah kemuliaan malam yang lebih baik dari seribu bulan dengan iktikaf penuh makna.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-wish">Semoga Ramadan ini menjadi jalan kita menuju Jannah-Nya.</p>
+            <p class="copyright">© 2026 • 2311102147 - AZARIA NANDA PUTRI</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Membuka modal dengan efek fadeIn
+            $('#btnOpenThr').on('click', function() {
+                $('#thrModal').fadeIn(400).css('display', 'flex');
+            });
+
+            // Menutup modal dan klaim
+            $('#btnClaimThr').on('click', function() {
+                $('#thrModal').fadeOut(300, function() {
+                    alert("THR Berhasil diklaim! Semoga berkah ya!");
+                });
+            });
+
+            // Menutup modal jika klik di area overlay (luar konten)
+            $(window).on('click', function(event) {
+                if ($(event.target).is('#thrModal')) {
+                    $('#thrModal').fadeOut(300);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
+
+## 2. Hasil
+<img src="assets/1.png" width="1000"> <br>
+<img src="assets/2.png" width="1000"> <br>
+<img src="assets/3.png" width="1000"> 
+
+## 3. Penjelasan
+Program di atas merupakan halaman web bertema Ramadan Kareem yang dibangun menggunakan HTML sebagai struktur halaman, CSS untuk mengatur tampilan visual, serta jQuery untuk menambahkan interaktivitas pada halaman web.
+
+## Struktur Tampilan Website
+
+Halaman ini terdiri dari beberapa bagian utama, yaitu:
+
+### 1. Hero Section
+Bagian awal halaman menampilkan judul utama bertema Ramadan yang dikombinasikan dengan tipografi dekoratif dan ilustrasi visual. Pada bagian ini juga terdapat tombol “Berkah THR dari Azaria” yang berfungsi untuk memicu munculnya popup THR.
+
+### 2. Modal atau Popup THR
+Modal merupakan elemen popup yang digunakan untuk menampilkan informasi tambahan kepada pengguna. Pada program ini, modal berisi pesan ucapan serta nominal THR yang dapat diklaim oleh pengguna. Secara default modal disembunyikan menggunakan properti CSS display: none.
+
+### 3. Section Amalan Ramadan
+Bagian ini berisi beberapa kartu informasi yang menampilkan berbagai amalan yang dianjurkan selama bulan Ramadan, seperti membaca Al-Qur’an, memperbanyak zikir, melaksanakan qiyamul lail, bersedekah, serta mencari malam Lailatul Qadar.
+
+### 4. Footer
+Footer berfungsi sebagai bagian penutup halaman yang berisi pesan doa Ramadan serta identitas pembuat website.
+
+## Logika Interaktivitas Menggunakan jQuery
+
+Interaktivitas utama pada halaman ini dikendalikan oleh jQuery melalui beberapa event handler.
+
+#### 1. Event Klik Tombol THR
+Ketika pengguna menekan tombol dengan ID #btnOpenThr, jQuery akan menampilkan modal dengan efek animasi fadeIn() sehingga popup muncul secara bertahap.
+
+
+#### 2. Event Klaim THR
+Saat tombol Ambil THR Mu ditekan, modal akan ditutup menggunakan efek fadeOut(). Setelah modal tertutup, program menampilkan notifikasi menggunakan fungsi alert().
+
+
+#### 3. Menutup Modal dengan Klik Area Luar
+Program juga menyediakan fitur tambahan yang memungkinkan pengguna menutup popup dengan logika tersebut memeriksa apakah area yang diklik merupakan bagian dari overlay modal. Jika benar, maka popup akan ditutup secara otomatis.
+
+## Animasi Tambahan dengan CSS
+
+Selain jQuery, halaman ini juga memanfaatkan animasi CSS untuk meningkatkan tampilan visual website. Contohnya adalah animasi float pada gambar dekorasi Ramadan sehingga terlihat seperti melayang, serta animasi popIn pada modal agar muncul dengan efek pembesaran ketika ditampilkan.
+
+Penggunaan kombinasi HTML, CSS, dan jQuery pada program ini membuat halaman web tidak hanya bersifat informatif tetapi juga interaktif dan menarik secara visual.
+
+# 3. Referensi
+
+[1] Materi Modul 5 Praktikum Aplikasi Berbasis Platform:(https://drive.google.com/file/d/1NKK3wu2ww23vudPo1DypbbiI9NM_9zwG/view?usp=drive_link)
+
+[2] https://jquery.com
+
+[3] https://developer.mozilla.org/en-US/docs/Web/JavaScript

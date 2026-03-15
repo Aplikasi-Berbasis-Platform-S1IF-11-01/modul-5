@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramadhan - Tugas 5 | Naufal Luthfi Assary-2311102125 </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-light vh-100 overflow-hidden d-flex flex-column">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success border-bottom border-secondary-subtle flex-shrink-0">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="#">Ramadhan</a>
+
+      <div class="collapse navbar-collapse show">
+        <ul class="navbar-nav ms-auto small">
+          <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Makna</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Nuansa</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="flex-grow-1 d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Kiri -->
+        <div class="col-lg-6">
+          <span class="badge rounded-pill text-bg-warning text-dark px-3 py-2 mb-3">
+            Marhaban Ya Ramadhan
+          </span>
+
+          <h1 class="display-2 fw-bold lh-sm mb-3">
+            Sambut Ramadhan<br>
+            dengan hati yang tenang
+          </h1>
+
+          <p class="fs-5 text-secondary mb-4" id="deskripsiRamadan">
+            Bulan suci yang menghadirkan keberkahan, ketenangan, dan kesempatan
+            untuk memperbaiki diri melalui ibadah, doa, dan kepedulian terhadap sesama.
+          </p>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="card bg-dark border border-secondary-subtle text-light shadow-sm h-100 rounded-4">
+                <div class="card-body text-center py-4">
+                  <h2 class="fw-bold text-warning mb-1">30</h2>
+                  <p class="mb-0 text-secondary">Hari Penuh Makna</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="card bg-dark border border-secondary-subtle text-light shadow-sm h-100 rounded-4">
+                <div class="card-body text-center py-4">
+                  <h2 class="fw-bold text-warning mb-1">1447 H</h2>
+                  <p class="mb-0 text-secondary">Nuansa Penuh Berkah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mb-4 text-light-emphasis fst-italic" id="quoteRamadan">
+            “Ramadhan bukan hanya tentang menahan lapar, tetapi juga menata hati,
+            menjaga lisan, dan memperindah akhlak.”
+          </p>
+
+          <!-- Button THR -->
+          <button
+            type="button"
+            id="btnThr"
+            class="btn btn-warning btn-lg fw-bold px-4 py-2 shadow"
+            data-bs-toggle="modal"
+            data-bs-target="#modalTHR">
+            Klaim THR Ramadhan
+          </button>
+        </div>
+
+        <!-- Kanan -->
+        <div class="col-lg-6">
+          <div class="card border-0 bg-dark shadow-lg rounded-4 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=80"
+              alt="Masjid Ramadan"
+              class="img-fluid"
+              style="max-height: 60vh; width: 100%; object-fit: cover;"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-2 bg-dark text-white text-center border-top border-secondary-subtle flex-shrink-0">
+    <div class="container">
+      <p class="mb-0">© 2026 Tugas 5 Aplikasi Berbasis Platform | Tema Ramadhan | Naufal Luthfi Assary - 2311102125</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalTHR" tabindex="-1" aria-labelledby="modalTHRLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light border border-warning rounded-4 shadow-lg">
+
+        <div class="modal-header border-warning">
+          <h5 class="modal-title fw-bold text-warning" id="modalTHRLabel">
+            🎉 Selamat!
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center py-4">
+          <h2 class="fw-bold text-warning mb-3">Selamat anda mendapatkan THR</h2>
+          <p class="text-secondary mb-0">
+            Semoga Ramadhan tahun ini membawa kebahagiaan, keberkahan, dan rezeki yang melimpah.
+          </p>
+        </div>
+
+        <div class="modal-footer border-0 justify-content-center pb-4">
+          <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Alhamdulillah</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Interaksi -->
+  <script>
+    $(document).ready(function () {
+      $("#btnThr").click(function () {
+        $("#deskripsiRamadan").slideUp(200).slideDown(200);
+        $("#quoteRamadan").fadeOut(200).fadeIn(400);
+        $(this).removeClass("btn-warning").addClass("btn-success");
+        $(this).text("THR Berhasil Diklaim");
+      });
+
+      $("#modalTHR").on("hidden.bs.modal", function () {
+        $("#btnThr").removeClass("btn-success").addClass("btn-warning");
+        $("#btnThr").text("Klaim THR Ramadan");
+      });
+    });
+  </script>
+</body>
+</html>
