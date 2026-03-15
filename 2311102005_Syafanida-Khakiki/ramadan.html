@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ramadan Kareem Interaktif</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Berkshire Swash -->
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-success bg-gradient text-white">
+
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+
+        <div class="bg-light bg-opacity-10 p-5 rounded-4 shadow-lg text-center">
+
+            <h1 class="display-3" style="font-family:'Berkshire Swash', cursive;">
+                🌙 Ramadan Kareem 🌙
+            </h1>
+
+            <p class="lead">Marhaban Ya Ramadan</p>
+
+            <div class="row mt-4 g-4">
+
+                <div class="col-md-4">
+                    <div class="card bg-light bg-opacity-10 text-white shadow border-0">
+                        <div class="card-body">
+                            <h4>✨ Sedekah</h4>
+                            <p>Berbagi rezeki kepada yang membutuhkan di bulan penuh berkah.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-light bg-opacity-10 text-white shadow border-0">
+                        <div class="card-body">
+                            <h4>✨ Tadarus</h4>
+                            <p>Membaca dan memahami Al-Qur'an untuk menambah pahala Ramadan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-light bg-opacity-10 text-white shadow border-0">
+                        <div class="card-body">
+                            <h4>✨ Tarawih</h4>
+                            <p>Melaksanakan shalat tarawih berjamaah di malam hari.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Tombol interaktif untuk THR -->
+            <button class="btn btn-warning mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#thrModal">
+                🎁 Tekan Untuk Dapatkan THR!
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Modal THR -->
+    <div class="modal fade" id="thrModal" tabindex="-1" aria-labelledby="thrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-light text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thrModalLabel">🎉 THR Ramadan 🎉</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>Selamat! Anda mendapatkan THR 💰</h4>
+                    <p>Semoga berkah dan rezeki selalu menyertai Anda di bulan Ramadan.</p>
+                    <!-- Gambar kucing di modal -->
+                    <img src="kucing.jpg" alt="Kucing" width="150" class="mt-3">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
