@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Ucapan Ramadan Modern</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark d-flex align-items-center justify-content-center vh-100 p-4 main-bg">
+
+    <div class="position-absolute rounded-circle bg-success opacity-25 glow-1"></div>
+    <div class="position-absolute rounded-circle bg-warning opacity-10 glow-2"></div>
+
+    <div class="card border-0 shadow-lg text-white text-center main-card">
+        <div class="card-body p-5">
+            <div class="mb-4 icon-float">
+                <i class="bi bi-moon-stars text-warning display-1 shadow-sm"></i>
+            </div>
+
+            <h5 class="text-uppercase fw-lighter tracking-widest mb-1" style="letter-spacing: 0.3rem;">Marhaban Ya</h5>
+            <h1 class="display-5 fw-bold mb-4 text-warning">Ramadan</h1>
+            
+            <div class="d-flex align-items-center justify-content-center mb-4 text-white-50">
+                <div class="flex-grow-1 border-bottom border-secondary"></div>
+                <i class="bi bi-star-fill mx-3 text-warning small"></i>
+                <div class="flex-grow-1 border-bottom border-secondary"></div>
+            </div>
+
+            <p class="lead fw-light mb-4 opacity-75" style="line-height: 1.8;">
+                Semoga bulan suci ini membawa <span class="text-warning">kedamaian</span>, 
+                <span class="text-warning">kebahagiaan</span>, dan <span class="text-warning">keberkahan</span> yang melimpah bagi kita semua.
+            </p>
+
+            <button class="btn btn-warning btn-thr w-100 py-3 rounded-pill fw-bold mb-4 shadow" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#thrModal">
+                <i class="bi bi-cash-stack me-2"></i> AMBIL THR CUY!
+            </button>
+
+            <div class="bg-white bg-opacity-10 py-3 rounded-4">
+                <p class="small mb-0 opacity-50 text-uppercase">Salam Hangat,</p>
+                <p class="h5 mb-0 fw-bold">Danendra Arden Shaduq</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="thrModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-white text-center border-0 shadow-lg">
+                <div class="modal-body p-5">
+                    <div class="display-1 mb-3">💵</div>
+                    <h2 class="fw-bold mb-2">MABRUK!</h2>
+                    <p class="opacity-75 mb-4">Selamat! Kamu mendapatkan kiriman THR:</p>
+                    
+                    <div class="thr-cash-box p-4 shadow-lg mb-4 text-white">
+                        <p class="small mb-1 fw-bold opacity-75">SALDO TUNAI</p>
+                        <h2 class="fw-bold mb-0 font-monospace">Rp 500.000</h2>
+                    </div>
+
+                    <button type="button" class="btn btn-light rounded-pill px-5 fw-bold shadow-sm" data-bs-dismiss="modal">
+                        Cihuyyy!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
