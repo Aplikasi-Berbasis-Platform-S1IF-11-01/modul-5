@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramadan 2026 — A Sacred Month</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="thr.css" />
+
+  <style>
+    :root {
+      --gold:        #d4af37;
+      --gold-light:  #e8cc6a;
+      --silver:      #c0c0c0;
+      --black:       #0f0f0f;
+      --dark-grey:   #2c2c2c;
+      --mid-grey:    #4a4a4a;
+      --light-grey:  #e5e5e5;
+      --white:       #ffffff;
+      --green:       #1b4332;
+      --green-light: #2d6a4f;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--black);
+      color: var(--light-grey);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    h1,h2,h3,h4,h5 { font-family:'Cormorant Garamond',serif; font-weight:400; letter-spacing:.04em; }
+
+    .gold-line      { display:block; width:48px; height:1px; background:var(--gold); margin:0 auto 1.5rem; }
+    .gold-line-left { display:block; width:40px; height:1px; background:var(--gold); margin-bottom:1rem; }
+
+    /* Navbar */
+    .navbar { background-color:rgba(15,15,15,.95)!important; border-bottom:1px solid rgba(212,175,55,.18); backdrop-filter:blur(8px); }
+    .navbar-brand { font-family:'Cormorant Garamond',serif; font-size:1.25rem; color:var(--gold)!important; letter-spacing:.1em; }
+    .nav-link { color:var(--silver)!important; font-size:.8rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; transition:color .25s; }
+    .nav-link:hover { color:var(--gold)!important; }
+
+    /* Section typography */
+    .section-label  { font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:400; }
+    .section-title  { font-size:clamp(2rem,4vw,3rem); color:var(--white); line-height:1.15; }
+    .section-body   { color:var(--silver); font-size:.95rem; line-height:1.85; }
+
+    /* Hero */
+    #hero { min-height:100vh; background:radial-gradient(ellipse at 50% 60%,#1b3325 0%,#0f0f0f 65%); position:relative; overflow:hidden; }
+    #hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 80%,rgba(212,175,55,.07) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(27,67,50,.25) 0%,transparent 50%); pointer-events:none; }
+    .stars { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+    .star  { position:absolute; background:var(--gold); border-radius:50%; animation:twinkle 3s infinite ease-in-out alternate; }
+    @keyframes twinkle { from{opacity:.15;transform:scale(1)} to{opacity:.7;transform:scale(1.4)} }
+    .hero-svg-wrap  { position:absolute; inset:0; pointer-events:none; }
+    .hero-title     { font-family:'Cormorant Garamond',serif; font-size:clamp(3.5rem,9vw,7.5rem); font-weight:300; color:var(--white); letter-spacing:.1em; line-height:1; text-shadow:0 2px 40px rgba(212,175,55,.2); }
+    .hero-year      { color:var(--gold); font-style:italic; }
+    .hero-subtitle  { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,2.2vw,1.4rem); color:var(--silver); font-weight:300; letter-spacing:.15em; }
+    .hero-divider   { width:1px; height:60px; background:linear-gradient(to bottom,transparent,var(--gold),transparent); margin:0 auto; }
+
+    /* Sections */
+    .section-dark   { background-color:var(--black); }
+    .section-darker { background-color:#111111; }
+    .section-green  { background:linear-gradient(135deg,#0d2b1e 0%,#111 100%); }
+
+    /* Cards */
+    .card-ramadan { background:#181818; border:1px solid rgba(212,175,55,.14); border-radius:2px; transition:border-color .3s,transform .3s,box-shadow .3s; }
+    .card-ramadan:hover { border-color:rgba(212,175,55,.45); transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.5); }
+    .card-icon   { font-size:1.8rem; color:var(--gold); }
+    .card-title-r { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--white); letter-spacing:.05em; }
+    .card-text-r  { color:var(--silver); font-size:.875rem; line-height:1.8; }
+
+    /* Laylat */
+    #laylat { background:linear-gradient(135deg,#0c1f16 0%,#0f0f0f 100%); border-top:1px solid rgba(212,175,55,.15); border-bottom:1px solid rgba(212,175,55,.15); position:relative; overflow:hidden; }
+    #laylat::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:400px; height:400px; background:radial-gradient(circle,rgba(212,175,55,.08) 0%,transparent 70%); pointer-events:none; }
+    .laylat-number { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,10vw,8rem); color:rgba(212,175,55,.12); font-weight:300; line-height:1; letter-spacing:.05em; }
+
+    /* Tradition */
+    .tradition-card { border-left:2px solid rgba(212,175,55,.35); padding-left:1.5rem; position:relative; }
+    .tradition-card::before { content:''; position:absolute; left:-5px; top:6px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+
+    /* Closing */
+    #closing { background:radial-gradient(ellipse at 50% 40%,#1b3325 0%,#0f0f0f 70%); border-top:1px solid rgba(212,175,55,.12); }
+    .closing-title  { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,5.5rem); color:var(--white); font-weight:300; letter-spacing:.1em; }
+    .closing-arabic { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,4vw,2.5rem); color:var(--gold); font-style:italic; letter-spacing:.06em; }
+
+    footer { background:#080808; border-top:1px solid rgba(212,175,55,.1); color:var(--mid-grey); font-size:.78rem; letter-spacing:.08em; }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:var(--black); }
+    ::-webkit-scrollbar-thumb { background:rgba(212,175,55,.35); border-radius:10px; }
+
+    .py-6 { padding-top:5rem!important; padding-bottom:5rem!important; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     THR ENVELOPE MODAL
+════════════════════════════════════════════════════════════ -->
+<div class="modal fade" id="thrModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="thrModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" id="thrModalContent">
+
+      <!-- ── STEP 1 : Envelope ─────────────────────────── -->
+      <div id="stepEnvelope">
+        <!-- Envelope SVG flap decoration -->
+        <div class="envelope-flap" aria-hidden="true">
+          <svg viewBox="0 0 480 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <polygon points="0,0 480,0 240,90" fill="#181818" stroke="rgba(212,175,55,.25)" stroke-width="1"/>
+          </svg>
+        </div>
+
+        <div class="modal-body text-center pt-5 pb-4 px-4">
+          <!-- Crescent decoration -->
+          <div class="mb-3" aria-hidden="true">
+            <svg width="52" height="52" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="65" cy="60" r="46" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+              <circle cx="90" cy="52" r="42" fill="#181818"/>
+              <!-- small stars -->
+              <circle cx="28" cy="30" r="2.5" fill="#d4af37" opacity=".8"/>
+              <circle cx="18" cy="58" r="1.8" fill="#d4af37" opacity=".6"/>
+              <circle cx="36" cy="14" r="1.5" fill="#d4af37" opacity=".5"/>
+            </svg>
+          </div>
+
+          <p class="thr-arabic mb-1">السلام عليكم</p>
+          <span class="gold-line d-block mx-auto mb-3" style="width:40px;"></span>
+          <h5 class="thr-heading mb-2">Welcome to the</h5>
+          <h4 class="thr-title mb-3">Ramadan 2026 Celebration</h4>
+          <p class="thr-body mb-4">A sacred gift awaits inside this envelope.<br>Open it to discover your Ramadan surprise.</p>
+
+          <!-- Lantern row -->
+          <div class="d-flex justify-content-center gap-3 mb-4" aria-hidden="true">
+            <svg width="22" height="40" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" opacity=".45">
+              <line x1="30" y1="0" x2="30" y2="10" stroke="#d4af37" stroke-width="2"/>
+              <rect x="14" y="10" width="32" height="6" rx="2" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <rect x="10" y="16" width="40" height="58" rx="4" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <line x1="10" y1="38" x2="50" y2="38" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="10" y1="52" x2="50" y2="52" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="30" y1="74" x2="30" y2="100" stroke="#d4af37" stroke-width="2"/>
+            </svg>
+            <svg width="22" height="40" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" opacity=".45">
+              <line x1="30" y1="0" x2="30" y2="10" stroke="#d4af37" stroke-width="2"/>
+              <rect x="14" y="10" width="32" height="6" rx="2" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <rect x="10" y="16" width="40" height="58" rx="4" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <line x1="10" y1="38" x2="50" y2="38" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="10" y1="52" x2="50" y2="52" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="30" y1="74" x2="30" y2="100" stroke="#d4af37" stroke-width="2"/>
+            </svg>
+            <svg width="22" height="40" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" opacity=".45">
+              <line x1="30" y1="0" x2="30" y2="10" stroke="#d4af37" stroke-width="2"/>
+              <rect x="14" y="10" width="32" height="6" rx="2" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <rect x="10" y="16" width="40" height="58" rx="4" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <line x1="10" y1="38" x2="50" y2="38" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="10" y1="52" x2="50" y2="52" stroke="#d4af37" stroke-width=".8" opacity=".5"/>
+              <line x1="30" y1="74" x2="30" y2="100" stroke="#d4af37" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <button class="btn thr-btn-gold w-100" id="btnOpenEnvelope">
+            <i class="bi bi-envelope-open me-2"></i>Open the Envelope
+          </button>
+          <button type="button" class="btn thr-btn-ghost mt-2 w-100" data-bs-dismiss="modal">
+            Continue to website
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2 : THR Reveal ───────────────────────── -->
+      <div id="stepReveal" class="d-none">
+        <div class="modal-body text-center py-5 px-4">
+
+          <div class="thr-reveal-icon mb-3" aria-hidden="true">
+            <i class="bi bi-gift"></i>
+          </div>
+
+          <p class="section-label mb-2">A Ramadan Gift for You</p>
+          <span class="gold-line d-block mx-auto mb-3"></span>
+          <h3 class="thr-heading mb-1" style="font-size:1.1rem;letter-spacing:.15em;">Congratulations!</h3>
+          <h2 class="thr-title mb-3">You received a<br>Ramadan THR surprise!</h2>
+
+          <!-- Amount card -->
+          <div class="thr-amount-card mx-auto mb-4">
+            <p class="thr-amount-label mb-1">THR Reward</p>
+            <p class="thr-amount-value mb-0">Rp 100,000</p>
+          </div>
+
+          <p class="thr-body mb-4">
+            Your Tunjangan Hari Raya has been prepared.<br>
+            Claim it before Eid to receive your reward.
+          </p>
+
+          <button class="btn thr-btn-gold w-100" id="btnClaim">
+            <i class="bi bi-award me-2"></i>Claim Your THR
+          </button>
+          <button type="button" class="btn thr-btn-ghost mt-2 w-100" data-bs-dismiss="modal">
+            Maybe later
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TOAST NOTIFICATION
+════════════════════════════════════════════════════════════ -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+  <div id="thrToast" class="toast align-items-center thr-toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-gift-fill me-2" style="color:var(--gold);"></i>
+        Your THR reward is ready to claim.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════ NAVBAR ══════════════════════════════ -->
+<nav class="navbar navbar-expand-lg sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="#">☽ Ramadan 2026</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon" style="filter:invert(1) sepia(1) saturate(2) hue-rotate(5deg);"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#values">Values</a></li>
+        <li class="nav-item"><a class="nav-link" href="#traditions">Traditions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#foods">Foods</a></li>
+        <li class="nav-item"><a class="nav-link" href="#laylat">Night of Power</a></li>
+        <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════════════════ -->
+<section id="hero" class="d-flex align-items-center justify-content-center text-center">
+  <div class="stars" id="starsContainer"></div>
+
+  <div class="hero-svg-wrap">
+    <svg style="position:absolute;top:8%;right:6%;width:clamp(80px,12vw,160px);opacity:.55;" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="65" cy="60" r="46" fill="none" stroke="#d4af37" stroke-width="1"/>
+      <circle cx="88" cy="52" r="42" fill="#0f0f0f"/>
+    </svg>
+    <svg style="position:absolute;bottom:14%;left:5%;width:clamp(40px,6vw,80px);opacity:.35;" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="0" x2="30" y2="10" stroke="#d4af37" stroke-width="1.5"/>
+      <rect x="14" y="10" width="32" height="6" rx="2" fill="none" stroke="#d4af37" stroke-width="1"/>
+      <rect x="10" y="16" width="40" height="58" rx="4" fill="none" stroke="#d4af37" stroke-width="1"/>
+      <line x1="10" y1="38" x2="50" y2="38" stroke="#d4af37" stroke-width=".8" opacity=".6"/>
+      <line x1="10" y1="52" x2="50" y2="52" stroke="#d4af37" stroke-width=".8" opacity=".6"/>
+      <line x1="30" y1="74" x2="30" y2="100" stroke="#d4af37" stroke-width="1.5"/>
+    </svg>
+    <svg style="position:absolute;bottom:20%;right:7%;width:clamp(30px,5vw,60px);opacity:.3;" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="0" x2="30" y2="10" stroke="#d4af37" stroke-width="1.5"/>
+      <rect x="14" y="10" width="32" height="6" rx="2" fill="none" stroke="#d4af37" stroke-width="1"/>
+      <rect x="10" y="16" width="40" height="58" rx="4" fill="none" stroke="#d4af37" stroke-width="1"/>
+      <line x1="10" y1="38" x2="50" y2="38" stroke="#d4af37" stroke-width=".8" opacity=".6"/>
+      <line x1="10" y1="52" x2="50" y2="52" stroke="#d4af37" stroke-width=".8" opacity=".6"/>
+      <line x1="30" y1="74" x2="30" y2="100" stroke="#d4af37" stroke-width="1.5"/>
+    </svg>
+    <svg style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,900px);opacity:.12;" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="450" cy="130" rx="90" ry="70" fill="#d4af37"/>
+      <rect x="360" y="130" width="180" height="50" fill="#d4af37"/>
+      <rect x="310" y="80" width="22" height="100" fill="#d4af37"/>
+      <ellipse cx="321" cy="75" rx="14" ry="22" fill="#d4af37"/>
+      <rect x="315" y="55" width="12" height="20" fill="#d4af37"/>
+      <rect x="568" y="80" width="22" height="100" fill="#d4af37"/>
+      <ellipse cx="579" cy="75" rx="14" ry="22" fill="#d4af37"/>
+      <rect x="573" y="55" width="12" height="20" fill="#d4af37"/>
+      <rect x="200" y="110" width="16" height="70" fill="#d4af37"/>
+      <ellipse cx="208" cy="106" rx="10" ry="16" fill="#d4af37"/>
+      <rect x="684" y="110" width="16" height="70" fill="#d4af37"/>
+      <ellipse cx="692" cy="106" rx="10" ry="16" fill="#d4af37"/>
+    </svg>
+  </div>
+
+  <div class="container position-relative z-1 py-5">
+    <p class="section-label mb-4">Ramadan 1447 AH</p>
+    <h1 class="hero-title mb-0">Ramadan</h1>
+    <h1 class="hero-title mb-4"><span class="hero-year">2026</span></h1>
+    <div class="hero-divider mb-4"></div>
+    <p class="hero-subtitle px-md-5">A Sacred Month of Reflection, Faith, and Community</p>
+    <div class="mt-5 d-flex justify-content-center gap-4">
+      <a href="#about" class="btn btn-outline-light btn-sm px-4 py-2" style="border-color:rgba(212,175,55,.5);color:var(--gold);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;">
+        Discover More
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" class="section-darker py-6">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 text-center">
+        <p class="section-label mb-3">The Sacred Month</p>
+        <span class="gold-line"></span>
+        <h2 class="section-title mb-4">About Ramadan</h2>
+        <p class="section-body">
+          Ramadan is the ninth month of the Islamic calendar and one of the holiest times for Muslims around the world.
+          During this month, Muslims fast from dawn until sunset, devote time to prayer, reflection, and acts of charity.
+          It is a time of profound spiritual discipline — a renewal of faith, gratitude, and connection to community.
+        </p>
+      </div>
+    </div>
+    <div class="row g-4 mt-5 justify-content-center">
+      <div class="col-sm-6 col-md-4">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-moon-stars card-icon mb-3 d-block"></i>
+          <p class="card-title-r mb-2">29 – 30 Days</p>
+          <p class="card-text-r mb-0">Ramadan spans one full lunar month, beginning and ending with the sighting of the crescent moon.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-globe2 card-icon mb-3 d-block"></i>
+          <p class="card-title-r mb-2">1.8 Billion Muslims</p>
+          <p class="card-text-r mb-0">Observed by Muslim communities across every continent, it is one of the world's most widely practised spiritual traditions.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-book card-icon mb-3 d-block"></i>
+          <p class="card-title-r mb-2">Month of the Qur'an</p>
+          <p class="card-text-r mb-0">It was during Ramadan that the first verses of the Holy Qur'an were revealed to the Prophet Muhammad ﷺ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ VALUES ══════════════════════════════ -->
+<section id="values" class="section-dark py-6">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-6">
+        <p class="section-label mb-3">Pillars of Practice</p>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Core Values of Ramadan</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card-ramadan p-4 h-100">
+          <span class="gold-line-left"></span>
+          <p class="section-label mb-2">01</p>
+          <p class="card-title-r mb-2">Fasting (Sawm)</p>
+          <p class="card-text-r mb-0">Abstaining from food, drink, and negative behaviours from Fajr to Maghrib — a physical and spiritual cleansing that cultivates self-discipline and empathy for the less fortunate.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card-ramadan p-4 h-100">
+          <span class="gold-line-left"></span>
+          <p class="section-label mb-2">02</p>
+          <p class="card-title-r mb-2">Prayer & Worship</p>
+          <p class="card-text-r mb-0">The five daily prayers are observed with heightened devotion, supplemented by nightly Taraweeh prayers and personal supplications seeking closeness to Allah.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card-ramadan p-4 h-100">
+          <span class="gold-line-left"></span>
+          <p class="section-label mb-2">03</p>
+          <p class="card-title-r mb-2">Charity & Generosity</p>
+          <p class="card-text-r mb-0">Zakat and Sadaqah are especially emphasised. Ramadan is a time of open hands — giving to the poor, feeding neighbours, and strengthening bonds of community.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card-ramadan p-4 h-100">
+          <span class="gold-line-left"></span>
+          <p class="section-label mb-2">04</p>
+          <p class="card-title-r mb-2">Spiritual Reflection</p>
+          <p class="card-text-r mb-0">Moments of silence, gratitude, and introspection allow believers to reconnect with their faith, recalibrate their values, and seek forgiveness and renewal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ TRADITIONS ══════════════════════════ -->
+<section id="traditions" class="section-green py-6">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-6">
+        <p class="section-label mb-3">Daily Rhythms</p>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Ramadan Traditions</h2>
+      </div>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-6">
+        <div class="tradition-card mb-5">
+          <p class="section-label mb-1">Iftar</p>
+          <h4 class="card-title-r mb-2">Breaking the Fast</h4>
+          <p class="card-text-r">As the sun sets and the Maghrib call to prayer sounds, the fast is broken — traditionally beginning with dates and water. Iftar is a joyful, communal occasion shared with family, friends, and neighbours.</p>
+        </div>
+        <div class="tradition-card">
+          <p class="section-label mb-1">Taraweeh</p>
+          <h4 class="card-title-r mb-2">Nightly Prayers</h4>
+          <p class="card-text-r">After Isha prayer, Muslims gather in mosques for Taraweeh — voluntary nightly prayers in which the entire Qur'an is recited over the course of the month. The congregation and recitation create a profoundly moving atmosphere.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tradition-card mb-5">
+          <p class="section-label mb-1">Suhoor</p>
+          <h4 class="card-title-r mb-2">The Pre-Dawn Meal</h4>
+          <p class="card-text-r">Before the Fajr call to prayer, Muslims rise in the stillness of the night to share Suhoor — a quiet, nourishing meal that sustains body and spirit through the day's fast. It is considered a blessed act.</p>
+        </div>
+        <div class="tradition-card">
+          <p class="section-label mb-1">Community</p>
+          <h4 class="card-title-r mb-2">Shared Gatherings</h4>
+          <p class="card-text-r">Ramadan strengthens the bonds of ummah (community). Families open their tables to guests, mosques host large communal iftars, and neighbours exchange food — an expression of unity and care that transcends borders.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOODS ═══════════════════════════════ -->
+<section id="foods" class="section-darker py-6">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-6">
+        <p class="section-label mb-3">At the Table</p>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Traditional Ramadan Foods</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-brightness-alt-high card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Dates</p>
+              <p class="card-text-r mb-0">The Prophet's tradition of breaking the fast with dates and water is observed worldwide. Sweet, nourishing, and full of energy — dates are the first food of Iftar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-triangle card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Samosa</p>
+              <p class="card-text-r mb-0">Crispy, golden pastry parcels filled with spiced meat or vegetables. A beloved Iftar snack across South Asia, the Middle East, and East Africa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-cup-hot card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Harira Soup</p>
+              <p class="card-text-r mb-0">A rich, aromatic Moroccan soup of tomatoes, lentils, chickpeas, and herbs — the quintessential Iftar opener across North Africa, warming both body and soul.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-stars card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Kunafa</p>
+              <p class="card-text-r mb-0">A celebrated Levantine dessert of shredded pastry, sweet cheese, and rose-scented syrup — golden, gooey, and utterly indulgent after a long day of fasting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-droplet-half card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Kolak</p>
+              <p class="card-text-r mb-0">A beloved Indonesian sweet dessert made with coconut milk, palm sugar, and fruits such as banana and jackfruit. Refreshing and comforting — a staple of Indonesian Iftar tables.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card-ramadan p-4 h-100">
+          <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-egg-fried card-icon mt-1"></i>
+            <div>
+              <p class="card-title-r mb-1">Martabak</p>
+              <p class="card-text-r mb-0">A favourite Indonesian street food synonymous with Ramadan nights — stuffed pancake or pan-fried flatbread available in savoury and sweet versions, sold at every bazaar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ LAYLAT AL-QADR ══════════════════════ -->
+<section id="laylat" class="py-6">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
+        <div class="laylat-number">27</div>
+        <p class="section-label mt-n2 mb-0">Last Ten Nights</p>
+      </div>
+      <div class="col-lg-7">
+        <p class="section-label mb-3">The Most Sacred Night</p>
+        <span class="gold-line-left"></span>
+        <h2 class="section-title mb-4">Laylat al-Qadr</h2>
+        <p class="section-body mb-4">
+          Translated as <em>The Night of Power</em>, Laylat al-Qadr is considered the most sacred night of the entire year.
+          It is believed to fall during the final ten nights of Ramadan — most commonly on the 27th night — and is described in the Qur'an as <em>"better than a thousand months."</em>
+        </p>
+        <p class="section-body">
+          Muslims spend these nights in intense worship, recitation of the Qur'an, supplication, and remembrance of Allah.
+          It is a night when mercy descends, prayers are answered, and destinies are written — a luminous culmination of the holy month.
+        </p>
+        <div class="mt-4 p-4" style="border:1px solid rgba(212,175,55,.2);background:rgba(212,175,55,.04);">
+          <p class="mb-0" style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold);font-style:italic;letter-spacing:.05em;">
+            "Indeed, We revealed it [the Qur'an] on the Night of Power. And what will make you realize what the Night of Power is? The Night of Power is better than a thousand months."
+          </p>
+          <p class="mt-2 mb-0 section-label" style="font-size:.65rem;">— Surah Al-Qadr (97:1–3)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ACTIVITIES ══════════════════════════ -->
+<section id="activities" class="section-dark py-6">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-6">
+        <p class="section-label mb-3">Ways to Observe</p>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Ramadan Activities</h2>
+      </div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-house-heart card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Family Iftar</p>
+          <p class="card-text-r" style="font-size:.8rem;">Sharing the breaking of the fast with loved ones</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-building card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Mosque Prayers</p>
+          <p class="card-text-r" style="font-size:.8rem;">Congregational Taraweeh and daily prayers</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-journal-bookmark card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Qur'an Reading</p>
+          <p class="card-text-r" style="font-size:.8rem;">Completing a full recitation during the month</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-heart card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Charity</p>
+          <p class="card-text-r" style="font-size:.8rem;">Giving Zakat and Sadaqah to those in need</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-shop card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Night Markets</p>
+          <p class="card-text-r" style="font-size:.8rem;">Vibrant Ramadan bazaars full of food and culture</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card-ramadan p-4 text-center h-100">
+          <i class="bi bi-people card-icon mb-3 d-block" style="font-size:2rem;"></i>
+          <p class="card-title-r" style="font-size:1rem;">Community</p>
+          <p class="card-text-r" style="font-size:.8rem;">Volunteering, visiting neighbours, and sharing meals</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CLOSING ═════════════════════════════ -->
+<section id="closing" class="py-6 text-center">
+  <div class="container py-6">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <p class="section-label mb-4">A Blessed Greeting</p>
+        <div class="hero-divider mb-5"></div>
+        <h2 class="closing-title mb-3">Ramadan Mubarak</h2>
+        <p class="closing-arabic mb-5">رمضان مبارك</p>
+        <p class="section-body px-md-4 mx-auto" style="max-width:560px;">
+          May this blessed month bring peace, faith, and prosperity to everyone.
+          May your fasts be accepted, your prayers answered, and your hearts filled with light and gratitude.
+        </p>
+        <div class="hero-divider mt-5"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ══════════════════════════════ -->
+<footer class="py-4 text-center">
+  <div class="container">
+    <p class="mb-1" style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:.1em;">☽ Ramadan 2026</p>
+    <p class="mb-0" style="color:var(--mid-grey);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;">
+      Created for University Web Design — Bootstrap 5 · HTML5
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="thr.js"></script>
+
+<!-- Star generator -->
+<script>
+  const starsContainer = document.getElementById('starsContainer');
+  for (let i = 0; i < 70; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + .5;
+    star.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+    starsContainer.appendChild(star);
+  }
+</script>
+
+<!-- Scroll reveal -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card-ramadan, .tradition-card').forEach(el => {
+    el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease,border-color .3s,box-shadow .3s;';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

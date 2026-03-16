@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claim Your Ramadan THR — Ramadan 2026</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="thr.css" />
+</head>
+<body class="claim-page">
+
+<!-- ── Top bar ──────────────────────────────────────────── -->
+<nav class="claim-navbar">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a href="index.html" class="claim-navbar-brand">☽ Ramadan 2026</a>
+    <a href="index.html" class="claim-back-link">
+      <i class="bi bi-arrow-left me-1"></i>Back to website
+    </a>
+  </div>
+</nav>
+
+<!-- ── Hero band ────────────────────────────────────────── -->
+<div class="claim-hero">
+  <div class="container">
+    <p class="claim-label mb-3">Tunjangan Hari Raya</p>
+    <h1 class="claim-title">Claim Your<br><span style="color:var(--gold);font-style:italic;">Ramadan THR</span></h1>
+    <div class="claim-divider"></div>
+    <p style="font-size:.9rem;color:var(--silver);letter-spacing:.04em;max-width:420px;margin:0 auto;line-height:1.75;">
+      Your reward has been reserved. Scan the QR code below to receive your Ramadan gift.
+    </p>
+  </div>
+</div>
+
+<!-- ── Main claim card ───────────────────────────────────── -->
+<main class="flex-grow-1 py-5">
+  <div class="container">
+
+    <!-- Amount badge -->
+    <div class="text-center mb-4">
+      <div class="claim-amount-badge">
+        <p class="label mb-0">Your THR Reward</p>
+        <p class="value mb-0">Rp 100,000</p>
+      </div>
+    </div>
+
+    <!-- QR card -->
+    <div class="claim-qr-card">
+
+      <!-- Decorative top rule -->
+      <div style="width:40px;height:1px;background:var(--gold);margin:0 auto 1.75rem;opacity:.6;"></div>
+
+      <!-- QR frame — replace qr-code.png with your actual QR image -->
+      <div class="claim-qr-frame">
+        <img
+          src="qrcode.jpeg"
+          alt="QR Code to claim Ramadan THR"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <!-- Fallback placeholder shown when image is missing -->
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:.5rem;">
+          <i class="bi bi-qr-code" style="font-size:3.5rem;color:rgba(212,175,55,.35);"></i>
+          <p style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(192,192,192,.4);margin:0;">qr-code.png</p>
+        </div>
+      </div>
+
+      <!-- Caption -->
+      <p class="claim-qr-caption text-center mb-2">
+        Scan the QR code to receive your THR reward.
+      </p>
+      <p class="claim-qr-note text-center mb-4">
+        *Yes, there is real money waiting for you!
+      </p>
+
+      <!-- Decorative bottom rule -->
+      <div style="width:40px;height:1px;background:var(--gold);margin:0 auto 1.75rem;opacity:.6;"></div>
+
+      <!-- Instructions -->
+      <div class="text-center">
+        <p style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(192,192,192,.4);margin-bottom:.5rem;">How to claim</p>
+        <ol style="text-align:left;font-size:.82rem;color:var(--silver);line-height:2;padding-left:1.2rem;max-width:260px;margin:0 auto;">
+          <li>Open your preferred payment app</li>
+          <li>Tap <strong style="color:var(--white);font-weight:400;">Scan QR</strong></li>
+          <li>Point your camera at the code above</li>
+          <li>Confirm and receive your reward</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Back button -->
+    <div class="text-center mt-5">
+      <a href="index.html" class="btn" style="background:transparent;border:1px solid rgba(212,175,55,.25);color:var(--silver);font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;padding:.55rem 1.75rem;transition:border-color .25s,color .25s;">
+        <i class="bi bi-arrow-left me-2"></i>Return to Ramadan 2026
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer class="claim-footer">
+  <p class="mb-0" style="color:rgba(212,175,55,.5);font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.1em;">☽ Ramadan 2026</p>
+  <p class="mb-0" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;">
+    University Web Design — Bootstrap 5 · HTML5
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
