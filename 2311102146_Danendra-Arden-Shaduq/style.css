@@ -1,0 +1,48 @@
+.main-bg {
+    background: linear-gradient(135deg, #1a472a 0%, #0d1f14 100%) !important;
+    overflow: hidden;
+}
+
+.glow-1 { width: 300px; height: 300px; top: -100px; right: -50px; filter: blur(80px); }
+.glow-2 { width: 200px; height: 200px; bottom: -50px; left: -50px; filter: blur(60px); }
+
+.main-card {
+    max-width: 400px;
+    border-radius: 2.5rem;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal-content {
+    background: rgba(13, 31, 20, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thr-cash-box {
+    background: linear-gradient(145deg, #1a472a, #2ecc71);
+    border-radius: 1.5rem;
+    transform: rotate(-2deg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-thr {
+    animation: pulse-yellow 2s infinite;
+    transition: transform 0.3s ease;
+}
+
+.btn-thr:hover { transform: scale(1.05); }
+
+@keyframes pulse-yellow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+}
+
+.icon-float { animation: floating 3s ease-in-out infinite; }
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
